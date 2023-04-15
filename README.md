@@ -1,0 +1,3 @@
+Doesnt support:
+- OOP
+- Unicode
