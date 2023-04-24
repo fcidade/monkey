@@ -25,6 +25,8 @@ if (5 < 10) {
 
 10 == 10;
 10 != 9;
+"foobar"
+"foo bar"
 `
 
 	tests := []struct {
@@ -107,11 +109,12 @@ if (5 < 10) {
 		{token.INT, "9"},
 		{token.SEMICOLON, ";"},
 
+		{token.STRING, "foobar"},
+		{token.STRING, "foo bar"},
+
 		{token.EOF, ""},
 	}
 
-	// !-/*5;
-	// 5 < 10 > 5;
 	l := New(input)
 	for i, tt := range tests {
 		tok := l.NextToken()
