@@ -7,6 +7,7 @@ type Integer struct {
 }
 
 var _ Object = &Integer{}
+var _ Hashable = &Integer{}
 
 func (i *Integer) Inspect() string {
 	return fmt.Sprintf("%d", i.Value)
@@ -14,4 +15,11 @@ func (i *Integer) Inspect() string {
 
 func (i *Integer) Type() ObjectType {
 	return INTEGER_OBJ
+}
+
+func (i *Integer) HashKey() HashKey {
+	return HashKey{
+		Type:  i.Type(),
+		Value: uint64(i.Value),
+	}
 }
